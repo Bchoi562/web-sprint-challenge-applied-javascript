@@ -26,8 +26,32 @@ axios
 .get('https://lambda-times-api.herokuapp.com/articles')
 .then((futureData)=>{
     const articleInfo = futureData.data;
-    
+    console.log(articleInfo.articles);
+
+    articleInfo.articles.bootstrap.forEach((each)=>{
+            cardsContainer.appendChild(cardMaker(each));
+    })
+    articleInfo.articles.javascript.forEach((each)=>{
+            cardsContainer.appendChild(cardMaker(each));
+    })
+    articleInfo.articles.jquery.forEach((each)=>{
+            cardsContainer.appendChild(cardMaker(each));
+    })
+    articleInfo.articles.node.forEach((each)=>{
+            cardsContainer.appendChild(cardMaker(each));
+    })
+    articleInfo.articles.technology.forEach((each)=>{
+            cardsContainer.appendChild(cardMaker(each));
+    })
+
+
 })
+.catch((err)=>{
+    console.log('this isnt working');
+    alert('this isnt working');
+})
+
+const cardsContainer = document.querySelector('.cards-container');
 
 function cardMaker(articleObj){
     const card = document.createElement('div');
@@ -60,3 +84,4 @@ function cardMaker(articleObj){
     return card;
 }
 
+// console.log(cardsContainer);
